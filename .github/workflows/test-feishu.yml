@@ -17,13 +17,16 @@ jobs:
         with:
           node-version: '18'
       
-      - name: Install dependencies
-        run: npm install
-      
       - name: Test Feishu push
         env:
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
-        run: node test_feishu_push.js
+        run: |
+          # 直接使用curl发送测试消息
+          now=$(date +"%Y-%m-%d %H:%M:%S")
+          message="【测试消息】\n\n当前时间: $now\n\n这是一条测试消息，用于验证飞书推送功能是否正常。"
+          payload=$(echo "{\"msg_type\": \"text\", \"content\": {\"text\": \"$message\"}}" | sed 's/\\n/\\\\n/g')
+          curl -X POST -H "Content-Type: application/json" -d "$payload" "$FEISHU_WEBHOOK"
+          echo "测试消息发送完成！"
       
       - name: Sleep for 60 seconds
         run: sleep 60
