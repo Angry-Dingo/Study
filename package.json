@@ -1,0 +1,17 @@
+{
+  "name": "a-stock-valuation-analyzer",
+  "version": "1.0.0",
+  "description": "A股股票估值分析系统",
+  "main": "src/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "node test_feishu_push.js"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "keywords": ["stock", "a-share", "valuation", "analysis"],
+  "author": "",
+  "license": "ISC"
+}
