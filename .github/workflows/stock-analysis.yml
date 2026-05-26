@@ -2,8 +2,8 @@ name: A股每日分析
 
 on:
   schedule:
-    # 工作日早上8:40执行（UTC时间 00:40，中国时区是UTC+8）
-    - cron: '40 0 * * 1-5'
+    # 工作日早上7:20执行（UTC时间 23:20前一天，中国时区是UTC+8）
+    - cron: '20 23 * * 0-4'
   workflow_dispatch:
 
 jobs:
